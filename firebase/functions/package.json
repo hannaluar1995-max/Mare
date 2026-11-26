@@ -1,0 +1,11 @@
+{
+  "name": "mare-avisos",
+  "private": true,
+  "description": "Avisos no celular do app Maré",
+  "main": "index.js",
+  "engines": { "node": "22" },
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.1.0"
+  }
+}

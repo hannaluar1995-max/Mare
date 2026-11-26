@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Maré · Seu ciclo menstrual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0ABAB5">
+<link rel="icon" type="image/png" href="icons/favicon.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Maré">
+<style>html,body{margin:0;height:100%}body{display:grid;place-items:center;background:linear-gradient(170deg,#06505a,#0ABAB5 70%,#81D8D0);color:#fff;font:16px/1.4 system-ui,sans-serif;text-align:center;padding:0 16px}</style>
+</head><body><p id="m">Carregando o Maré…</p>
+<script>
+/* Ponte: busca a versão mais recente do app no GitHub. Sem internet, usa a última versão guardada. */
+(async()=>{
+  const SRC="https://hannaluar1995-max.github.io/Mare/app.html",K="mare-app-html",ok=t=>typeof t=="string"&&t.indexOf("<!--mare-app-->")>-1;
+  let h=null;
+  try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),7000);const r=await fetch(SRC+"?v="+Date.now(),{cache:"no-store",signal:c.signal});clearTimeout(tm);if(r.ok){const t=await r.text();if(ok(t)){h=t;try{localStorage.setItem(K,t)}catch(e){}}}}catch(e){}
+  if(!h){try{const t=localStorage.getItem(K);if(ok(t))h=t}catch(e){}}
+  if(!h){try{const r=await fetch("app.html");if(r.ok){const t=await r.text();if(ok(t))h=t}}catch(e){}}
+  if(!h){document.getElementById("m").textContent="Sem conexão. Abra o Maré de novo quando tiver internet.";return}
+  document.open();document.write(h);document.close();
+})();
+</script></body></html>

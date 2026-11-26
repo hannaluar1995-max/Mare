@@ -1,0 +1,69 @@
+MARÉ · SEU CICLO MENSTRUAL
+Como colocar o app no ar (cerca de 20 minutos, num computador)
+Os nomes dos botões do Firebase podem variar um pouco.
+
+1. CRIAR O PROJETO
+   - Acesse https://console.firebase.google.com e entre com a sua conta Google.
+   - Toque em "Criar um projeto". Nome: mare. Pode desativar o Google Analytics.
+   - Anote o ID do projeto (aparece embaixo do nome, por exemplo mare-1a2b3).
+
+2. ATIVAR O PLANO BLAZE (necessário para os avisos no celular)
+   - No canto inferior esquerdo, onde está escrito "Spark", toque em "Fazer upgrade" e escolha Blaze.
+   - Cadastre o cartão e crie um alerta de orçamento de R$ 5.
+     Com só vocês dois usando, o custo esperado é zero.
+
+3. ATIVAR O LOGIN
+   - Menu Criação (Build) > Authentication > Vamos começar.
+   - Escolha "E-mail/senha", ative e salve.
+
+4. CRIAR O BANCO DE DADOS
+   - Menu Criação (Build) > Firestore Database > Criar banco de dados.
+   - Local: southamerica-east1 (São Paulo). Precisa ser este.
+   - Modo de produção > Criar.
+
+5. REGISTRAR O APP DA WEB
+   - Engrenagem (canto superior esquerdo) > Configurações do projeto > Seus apps > ícone </>.
+   - Apelido: Maré. Marque "Também configurar o Firebase Hosting".
+   - Registrar app > avance até o fim (não precisa copiar nada).
+
+6. PUBLICAR
+   - Instale o Node.js, versão LTS: https://nodejs.org
+   - Descompacte esta pasta (mare-app).
+   - Windows: dois cliques em publicar-windows.bat
+     Mac: botão direito em publicar-mac.command > Abrir
+   - Cole o ID do projeto, entre na sua conta Google quando o navegador abrir e espere.
+   - Se perguntar por quantos dias guardar imagens, digite 1 e Enter.
+   - Na primeira vez pode aparecer um erro pedindo para tentar de novo em alguns minutos.
+     É normal: espere 5 minutos e rode o arquivo de novo.
+   - No fim aparece "Deploy complete!".
+
+7. NO SEU CELULAR
+   - Abra https://ID-DO-PROJETO.web.app (troque pelo seu ID).
+   - Criar conta > Começar como ela.
+   - Ajustes > Ativar avisos neste celular > Permitir.
+   - Ajustes > Instalar o Maré (ou menu ⋮ do Chrome > Instalar app). O ícone da sereia vai para a tela inicial.
+   - Ajustes > Seus dados > Importar arquivo de dados > escolha mare-dados.json
+     (são os registros que você fez no Claude).
+   - Ajustes > Seu marido > Enviar convite.
+
+8. NO CELULAR DELE
+   - Abrir o link do convite > Criar conta > Entrar como ele.
+   - Ajustes > Ativar avisos neste celular > Permitir.
+   - Instalar o app (menu ⋮ do Chrome > Instalar app).
+   - No iPhone: Safari > Compartilhar > Adicionar à Tela de Início. Abra pelo ícone,
+     entre de novo, cole o link do convite no campo "Sou ele" e ative os avisos por lá
+     (os avisos no iPhone só funcionam pelo ícone, com iOS 16.4 ou mais novo).
+
+AVISOS QUE CHEGAM NO CELULAR
+   - Para os dois, às 9h: a TPM começa hoje, a menstruação deve começar hoje,
+     menstruação atrasada (no 1º dia de atraso e depois a cada 2 dias, se ela não marcar).
+   - Para os dois, no horário: remédio ou vitamina cadastrado em Ciclo > Lembretes
+     (não chega se ela já marcou "Tomei").
+   - Só para ele, na hora: alerta quando ela marca libido alta.
+
+PRIVACIDADE
+   - Os registros completos dela ficam numa área que só a conta dela lê.
+   - Ele recebe apenas um resumo: fase, TPM, humor, libido alta e sintomas do dia.
+     Relação sexual, testes e medicações do dia não aparecem para ele. Os lembretes
+     de remédio que ela cadastrar (nome e horário) também avisam ele, como combinado.
+   - O arquivo mare-dados.json tem seus registros. Não coloque esse arquivo dentro desta pasta.

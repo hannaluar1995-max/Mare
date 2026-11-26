@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function logado() { return request.auth != null; }
+
+    // Registros completos dela: só ela lê e escreve.
+    match /ela/{uid} {
+      allow read, write: if logado() && request.auth.uid == uid;
+    }
+
+    // Papel de cada pessoa (ela ou ele) e o casal ao qual pertence.
+    match /usuarios/{uid} {
+      allow read, write: if logado() && request.auth.uid == uid;
+    }
+
+    // Celulares que recebem avisos: cada um cuida dos seus.
+    match /tokens/{uid} {
+      allow read, write: if logado() && request.auth.uid == uid;
+    }
+
+    // Casal: o resumo que ele vê e os pedidos dela. Ela escreve; ele lê e responde em doEle.
+    match /casais/{id} {
+      allow create: if logado()
+        && request.resource.data.ela == request.auth.uid
+        && request.resource.data.ele == null;
+      allow read: if logado()
+        && (resource.data.ela == request.auth.uid || resource.data.ele == request.auth.uid);
+      allow update: if logado() && (
+        (resource.data.ela == request.auth.uid && request.resource.data.ela == resource.data.ela)
+        || (resource.data.ele == null
+            && request.resource.data.ele == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['ele']))
+        // Ele só pode escrever os recados e as respostas dele
+        || (resource.data.ele == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['doEle']))
+      );
+      allow delete: if logado() && resource.data.ela == request.auth.uid;
+    }
+
+    // Controle interno dos avisos já enviados (só o servidor usa).
+    match /envios/{id} {
+      allow read, write: if false;
+    }
+  }
+}
